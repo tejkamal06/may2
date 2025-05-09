@@ -144,8 +144,9 @@
                 console.log("Submitted to Google Sheets...");
                 // Redirect after 1 second
                 setTimeout(() => {
+                    form.reset(); 
                     errorMessage.style.display = "block";
-                }, 1000);
+                }, 1500);
             }).catch(error => {
                 console.error("Submission failed:", error);
                 // Re-enable button on error
